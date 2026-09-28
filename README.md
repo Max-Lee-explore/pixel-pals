@@ -2,6 +2,12 @@
 
 Adopt a pixel-art **cat, dog, rabbit or hamster**, give it a name, and it lives in your Chrome browser:
 
+| | Cat | Dog | Rabbit | Hamster |
+|---|:---:|:---:|:---:|:---:|
+| **Happy** | <img src="docs/pets/cat-idle.png" width="96" alt="Cat, happy"> | <img src="docs/pets/dog-idle.png" width="96" alt="Dog, happy"> | <img src="docs/pets/rabbit-idle.png" width="96" alt="Rabbit, happy"> | <img src="docs/pets/hamster-idle.png" width="96" alt="Hamster, happy"> |
+| **Sleepy** | <img src="docs/pets/cat-sleep.png" width="96" alt="Cat, sleeping"> | <img src="docs/pets/dog-sleep.png" width="96" alt="Dog, sleeping"> | <img src="docs/pets/rabbit-sleep.png" width="96" alt="Rabbit, sleeping"> | <img src="docs/pets/hamster-sleep.png" width="96" alt="Hamster, sleeping"> |
+| **Sad** | <img src="docs/pets/cat-sad.png" width="96" alt="Cat, sad"> | <img src="docs/pets/dog-sad.png" width="96" alt="Dog, sad"> | <img src="docs/pets/rabbit-sad.png" width="96" alt="Rabbit, sad"> | <img src="docs/pets/hamster-sad.png" width="96" alt="Hamster, sad"> |
+
 - **Pet** – feed, play with and put your pet to sleep; watch happiness, energy, XP and level. Pets level up from playing and from finished focus sessions.
 - **Focus** – a study timer (Pomodoro). Every finished session gives your pet XP and sends a desktop notification.
 - **Timetable** – add your weekly classes and see what's next today.
@@ -195,7 +201,7 @@ lib/i18n.js              Loads strings, placeholders, plurals, pseudo-localisati
 lib/store.js             Pet (species, name, XP, level), timer and timetable data
 images/pets/             16×16 pixel-art sprites: <animal>-idle / -sleep / -sad.png
 icons/                   Toolbar icons (regenerate with: python3 tools/make_icons.py)
-.cursor/mcp.json         Pixel Art MCP server config used to draw the sprites
+docs/pets/               Enlarged sprite previews for this README (same script)
 ```
 
 The sprites were drawn in Cursor with the [Pixel Art MCP server](https://github.com/adrianoamaral/pixel-mcp) (`pxcli-mcp`), which exports straight into `images/pets/`.

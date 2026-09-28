@@ -1,8 +1,9 @@
-"""Builds the toolbar icons (icons/icon{16,32,48,128}.png) from the cat sprite.
+"""Builds the toolbar icons (icons/icon{16,32,48,128}.png) from the cat sprite,
+and 128px README previews of every sprite (docs/pets/*.png).
 
 The pet sprites in images/pets/ were drawn with the Pixel Art MCP server
 (https://github.com/adrianoamaral/pixel-mcp). This script only scales the
-16x16 cat up with nearest-neighbour, so the icon stays crisp.
+16x16 sprites up with nearest-neighbour, so they stay crisp.
 
 Run from the project root:  python3 tools/make_icons.py
 """
@@ -60,13 +61,26 @@ def write_png(path, size, pixel):
         f.write(b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', header) + chunk(b'IDAT', zlib.compress(raw, 9)) + chunk(b'IEND', b''))
 
 
+def scale(source, dest, size):
+    w, h, rows = read_png(source)
+
+    def pixel(x, y):
+        sx, sy = x * w // size, y * h // size
+        return rows[sy][sx * 4:sx * 4 + 4]
+    write_png(dest, size, pixel)
+
+
 if __name__ == '__main__':
-    w, h, rows = read_png(SOURCE)
-    out_dir = os.path.join(ROOT, 'icons')
-    os.makedirs(out_dir, exist_ok=True)
+    icon_dir = os.path.join(ROOT, 'icons')
+    os.makedirs(icon_dir, exist_ok=True)
     for size in (16, 32, 48, 128):
-        def pixel(x, y, size=size):
-            sx, sy = x * w // size, y * h // size
-            return rows[sy][sx * 4:sx * 4 + 4]
-        write_png(os.path.join(out_dir, f'icon{size}.png'), size, pixel)
-    print('Icons written to', os.path.abspath(out_dir))
+        scale(SOURCE, os.path.join(icon_dir, f'icon{size}.png'), size)
+    print('Icons written to', os.path.abspath(icon_dir))
+
+    pets_dir = os.path.join(ROOT, 'images', 'pets')
+    docs_dir = os.path.join(ROOT, 'docs', 'pets')
+    os.makedirs(docs_dir, exist_ok=True)
+    for name in sorted(os.listdir(pets_dir)):
+        if name.endswith('.png'):
+            scale(os.path.join(pets_dir, name), os.path.join(docs_dir, name), 128)
+    print('README previews written to', os.path.abspath(docs_dir))
