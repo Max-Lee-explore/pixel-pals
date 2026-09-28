@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "pixel-art": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "pxcli-mcp",
+        "--export-dir",
+        "/Users/maxlee/Documents/AI coding/Google Chrome Plug-in/chromeplugin/images/pets"
+      ]
+    }
+  }
+}
