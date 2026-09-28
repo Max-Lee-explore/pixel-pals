@@ -1,0 +1,540 @@
+{
+  "appLocale": {
+    "message": "en",
+    "description": "TECHNICAL, DO NOT TRANSLATE AS A WORD. Replace 'en' with the Chrome locale code of your translation, e.g. zh_TW, zh_CN, ja, ko, fr, es. It controls date, time and number formatting."
+  },
+  "extName": {
+    "message": "Pixel Pals: Study Pets",
+    "description": "Name of the extension (a product name), shown in the Chrome Web Store and on the Extensions page. 'Pixel' refers to pixel-art graphics; 'Pals' = friends. You may keep it in English or create a catchy local name. Max 45 chars."
+  },
+  "extDescription": {
+    "message": "Adopt a pixel-art pet that lives in your browser, keeps you company while you study, and helps you plan your week.",
+    "description": "Short description of the extension, shown on the Extensions page and in the Chrome Web Store. Max 132 chars (Chrome limit)."
+  },
+  "actionTitle": {
+    "message": "Open Pixel Pals",
+    "description": "Tooltip shown when the mouse hovers over the extension icon in the toolbar. Max 30 chars."
+  },
+
+  "speciesCat": {
+    "message": "Cat",
+    "description": "Name of an animal the user can choose as a pet (noun, singular). Shown under its picture. Max 10 chars."
+  },
+  "speciesDog": {
+    "message": "Dog",
+    "description": "Name of an animal the user can choose as a pet (noun, singular). Shown under its picture. Max 10 chars."
+  },
+  "speciesRabbit": {
+    "message": "Rabbit",
+    "description": "Name of an animal the user can choose as a pet (noun, singular). Shown under its picture. Max 10 chars."
+  },
+  "speciesHamster": {
+    "message": "Hamster",
+    "description": "Name of an animal the user can choose as a pet (noun, singular). Shown under its picture. Max 10 chars."
+  },
+  "defaultNameCat": {
+    "message": "Pip",
+    "description": "Suggested name for a pet cat, used if the user does not type their own name. Adapt it to a short, cute pet name that sounds natural in your language. Max 12 chars."
+  },
+  "defaultNameDog": {
+    "message": "Biscuit",
+    "description": "Suggested name for a pet dog, used if the user does not type their own name. Adapt it to a short, cute pet name that sounds natural in your language. Max 12 chars."
+  },
+  "defaultNameRabbit": {
+    "message": "Clover",
+    "description": "Suggested name for a pet rabbit, used if the user does not type their own name. Adapt it to a short, cute pet name that sounds natural in your language. Max 12 chars."
+  },
+  "defaultNameHamster": {
+    "message": "Peanut",
+    "description": "Suggested name for a pet hamster, used if the user does not type their own name. Adapt it to a short, cute pet name that sounds natural in your language. Max 12 chars."
+  },
+  "adoptTitle": {
+    "message": "Choose your study pet",
+    "description": "Heading of the first screen, where the user picks an animal (cat, dog, rabbit or hamster). Max 30 chars."
+  },
+  "adoptNameLabel": {
+    "message": "Give your pet a name",
+    "description": "Label of the text field where the user types a name for their new pet. Max 30 chars."
+  },
+  "btnAdopt": {
+    "message": "Adopt",
+    "description": "Button (VERB): confirm the chosen animal and name and start looking after the pet. Max 10 chars."
+  },
+  "settingsPetTitle": {
+    "message": "Your pet",
+    "description": "Heading of the Settings section where the user can rename the pet or change the animal. Max 24 chars."
+  },
+  "fieldPetName": {
+    "message": "Name",
+    "description": "Form field label: the pet's name. Max 12 chars."
+  },
+  "fieldSpecies": {
+    "message": "Animal",
+    "description": "Form field label: which animal the pet is (cat, dog, rabbit, hamster). Max 12 chars."
+  },
+  "btnSavePet": {
+    "message": "Save",
+    "description": "Button (VERB): save the new pet name/animal. Max 10 chars."
+  },
+  "petSaved": {
+    "message": "Saved!",
+    "description": "Short confirmation shown next to the Save button after saving. Max 16 chars."
+  },
+
+  "tabPet": {
+    "message": "Pet",
+    "description": "Navigation tab label (noun). Opens the page where you look after your pet. Max 10 chars."
+  },
+  "tabFocus": {
+    "message": "Focus",
+    "description": "Navigation tab label (noun). Opens the study timer (Pomodoro timer). Max 10 chars."
+  },
+  "tabTimetable": {
+    "message": "Timetable",
+    "description": "Navigation tab label (noun). Opens the student's weekly class timetable. Max 10 chars."
+  },
+  "tabSettings": {
+    "message": "Settings",
+    "description": "Navigation tab label (noun). Opens the settings page. Max 10 chars."
+  },
+
+  "petGreeting": {
+    "message": "Hi, I'm $PETNAME$!",
+    "description": "Greeting at the top of the Pet page, said by the pet itself. PETNAME is the name the user gave the pet. Informal, friendly tone. Max 30 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" }
+    }
+  },
+  "statHappiness": {
+    "message": "Happiness",
+    "description": "Label above a progress bar showing how happy the pet is (0-100). Max 14 chars."
+  },
+  "statEnergy": {
+    "message": "Energy",
+    "description": "Label above a progress bar showing how much energy the pet has (0-100). Max 14 chars."
+  },
+  "statLevel": {
+    "message": "Level $LEVEL$",
+    "description": "Badge showing the pet's level, like in a game. Max 12 chars.",
+    "placeholders": {
+      "level": { "content": "$1", "example": "3" }
+    }
+  },
+  "statXp": {
+    "message": "$CURRENT$ / $TOTAL$ XP to the next level",
+    "description": "Progress text under the level badge. XP = experience points (game term). Max 40 chars.",
+    "placeholders": {
+      "current": { "content": "$1", "example": "35" },
+      "total": { "content": "$2", "example": "100" }
+    }
+  },
+  "btnFeed": {
+    "message": "Feed",
+    "description": "Button (VERB, imperative): give food to the pet. NOT a news feed. Max 8 chars."
+  },
+  "btnPlay": {
+    "message": "Play",
+    "description": "Button (VERB, imperative): play with the pet. NOT 'play' a video or music. Max 8 chars."
+  },
+  "btnNap": {
+    "message": "Nap",
+    "description": "Button (VERB, imperative): let the pet take a short sleep. Max 8 chars."
+  },
+  "moodHappy": {
+    "message": "$PETNAME$ is feeling great!",
+    "description": "Status line on the Pet page when the pet is very happy. Max 40 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" }
+    }
+  },
+  "moodOkay": {
+    "message": "$PETNAME$ is doing fine.",
+    "description": "Status line on the Pet page when the pet's happiness is medium. Max 40 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" }
+    }
+  },
+  "moodSad": {
+    "message": "$PETNAME$ feels a bit lonely.",
+    "description": "Status line on the Pet page when the pet is unhappy. Max 40 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" }
+    }
+  },
+  "moodTired": {
+    "message": "$PETNAME$ is sleepy. Maybe take a nap?",
+    "description": "Status line on the Pet page when the pet has low energy. Suggests pressing the Nap button. Max 40 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" }
+    }
+  },
+  "reactFeed": {
+    "message": "Yum! Thank you!",
+    "description": "Speech bubble said by the pet after being fed. Cute, informal. Max 24 chars."
+  },
+  "reactFull": {
+    "message": "I'm full! Maybe later.",
+    "description": "Speech bubble said by the pet when it has been fed too many times recently. Max 24 chars."
+  },
+  "reactPlay": {
+    "message": "Wheee! That was fun!",
+    "description": "Speech bubble said by the pet after playing. Cute, excited. Max 24 chars."
+  },
+  "reactTooTired": {
+    "message": "Too tired to play…",
+    "description": "Speech bubble said by the pet when it has no energy to play. Max 24 chars."
+  },
+  "reactLevelUp": {
+    "message": "Level up! I'm level $LEVEL$ now!",
+    "description": "Speech bubble said by the pet when it reaches a new level (game term). Excited. Max 32 chars.",
+    "placeholders": {
+      "level": { "content": "$1", "example": "4" }
+    }
+  },
+  "reactNap": {
+    "message": "Zzz…",
+    "description": "Speech bubble while the pet is sleeping (sound of snoring). Use your language's sleeping sound. Max 24 chars."
+  },
+
+  "focusTitle": {
+    "message": "Focus timer",
+    "description": "Heading of the Focus page. A timer that alternates study time and short breaks (Pomodoro technique). Max 24 chars."
+  },
+  "phaseFocus": {
+    "message": "Focus time",
+    "description": "Label under the big countdown clock while the student is studying. Max 16 chars."
+  },
+  "phaseBreak": {
+    "message": "Break time",
+    "description": "Label under the big countdown clock during the rest period between study sessions. Max 16 chars."
+  },
+  "btnStart": {
+    "message": "Start",
+    "description": "Button (VERB): start the timer. Max 10 chars."
+  },
+  "btnPause": {
+    "message": "Pause",
+    "description": "Button (VERB): pause the running timer. Max 10 chars."
+  },
+  "btnResume": {
+    "message": "Resume",
+    "description": "Button (VERB): continue a paused timer. Max 10 chars."
+  },
+  "btnReset": {
+    "message": "Reset",
+    "description": "Button (VERB): stop the timer and set it back to the beginning. Max 10 chars."
+  },
+  "focusLengthLabel": {
+    "message": "Focus (min)",
+    "description": "Label of a number field: how many minutes one study session lasts. 'min' = minutes. Max 16 chars."
+  },
+  "breakLengthLabel": {
+    "message": "Break (min)",
+    "description": "Label of a number field: how many minutes one break lasts. 'min' = minutes. Max 16 chars."
+  },
+  "sessionsTodayNone": {
+    "message": "No focus sessions yet today. Let's start one!",
+    "description": "Shown on the Focus page when the student has not completed any study session today. Max 60 chars."
+  },
+  "sessionsToday_one": {
+    "message": "You completed $COUNT$ focus session today.",
+    "description": "PLURAL FORM 'one'. Shown when exactly 1 session was completed today. If your language has no plural forms, translate this and 'sessionsToday_other' the same way. Max 60 chars.",
+    "placeholders": {
+      "count": { "content": "$1", "example": "1" }
+    }
+  },
+  "sessionsToday_other": {
+    "message": "You completed $COUNT$ focus sessions today.",
+    "description": "PLURAL FORM 'other'. Shown when 2 or more sessions were completed today. Max 60 chars.",
+    "placeholders": {
+      "count": { "content": "$1", "example": "4" }
+    }
+  },
+  "focusTip": {
+    "message": "Every finished focus session gives $PETNAME$ $XP$ XP.",
+    "description": "Small hint text at the bottom of the Focus page. XP = experience points. Max 60 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" },
+      "xp": { "content": "$2", "example": "20" }
+    }
+  },
+  "notifFocusDoneTitle": {
+    "message": "Focus session complete!",
+    "description": "Title of a desktop notification when a study session ends. Max 40 chars."
+  },
+  "notifFocusDoneBody": {
+    "message": "Great work! $PETNAME$ earned $XP$ XP. Time for a $MINUTES$-minute break.",
+    "description": "Body of a desktop notification when a study session ends. Note the word order may need to change in your language. Max 100 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" },
+      "xp": { "content": "$2", "example": "20" },
+      "minutes": { "content": "$3", "example": "5" }
+    }
+  },
+  "notifBreakDoneTitle": {
+    "message": "Break is over",
+    "description": "Title of a desktop notification when the break ends. Max 40 chars."
+  },
+  "notifBreakDoneBody": {
+    "message": "Ready for another round? $PETNAME$ believes in you!",
+    "description": "Body of a desktop notification when the break ends, encouraging the student to study again. Max 100 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" }
+    }
+  },
+
+  "ttTitle": {
+    "message": "My week",
+    "description": "Heading of the Timetable page. Max 24 chars."
+  },
+  "ttNext": {
+    "message": "Next up: $CLASS$ at $TIME$",
+    "description": "Highlight box showing the next class today. CLASS is a course name typed by the user, TIME is a formatted time like '2:30 PM' or '14:30'. Max 50 chars.",
+    "placeholders": {
+      "class": { "content": "$1", "example": "Translation Technology" },
+      "time": { "content": "$2", "example": "2:30 PM" }
+    }
+  },
+  "ttNothingLeftToday": {
+    "message": "No more classes today. Enjoy your free time!",
+    "description": "Highlight box when there are no more classes for the rest of today. Max 50 chars."
+  },
+  "ttEmpty": {
+    "message": "Your timetable is empty. Add your first class below.",
+    "description": "Shown when the user has not added any classes yet. Max 60 chars."
+  },
+  "ttToday": {
+    "message": "Today",
+    "description": "Small tag next to the name of the current day of the week in the timetable. Max 10 chars."
+  },
+  "ttTimeRange": {
+    "message": "$START$–$END$",
+    "description": "Time range of a class, e.g. '9:00–10:30'. Adapt the dash or add words (e.g. 'from … to …') if your language needs it. Max 20 chars.",
+    "placeholders": {
+      "start": { "content": "$1", "example": "9:00" },
+      "end": { "content": "$2", "example": "10:30" }
+    }
+  },
+  "ttAddHeading": {
+    "message": "Add a class",
+    "description": "Heading of the form used to add a new class to the timetable. Max 24 chars."
+  },
+  "fieldClassName": {
+    "message": "Class name",
+    "description": "Form field label: the name of a course/lesson (e.g. 'Translation Technology'). Max 16 chars."
+  },
+  "fieldDay": {
+    "message": "Day",
+    "description": "Form field label: day of the week. Max 10 chars."
+  },
+  "fieldStart": {
+    "message": "Start",
+    "description": "Form field label (NOUN): the time the class starts. Different from the 'Start' button on the Focus page. Max 10 chars."
+  },
+  "fieldEnd": {
+    "message": "End",
+    "description": "Form field label (NOUN): the time the class ends. Max 10 chars."
+  },
+  "fieldRoom": {
+    "message": "Room",
+    "description": "Form field label: classroom or location of the class. Max 10 chars."
+  },
+  "placeholderClassName": {
+    "message": "e.g. Translation Technology",
+    "description": "Grey example text inside the empty 'Class name' field. 'e.g.' = for example. Max 30 chars."
+  },
+  "placeholderRoom": {
+    "message": "e.g. Room 301",
+    "description": "Grey example text inside the empty 'Room' field. Max 20 chars."
+  },
+  "btnAddClass": {
+    "message": "Add",
+    "description": "Button (VERB): add the class to the timetable. Max 10 chars."
+  },
+  "btnDeleteClass": {
+    "message": "Delete $CLASS$",
+    "description": "Tooltip and screen-reader label for the small × button that removes a class. Max 40 chars.",
+    "placeholders": {
+      "class": { "content": "$1", "example": "Translation Technology" }
+    }
+  },
+  "errorClassNameRequired": {
+    "message": "Please enter a class name.",
+    "description": "Error message when the user tries to add a class without a name. Max 50 chars."
+  },
+  "errorTimeOrder": {
+    "message": "The end time must be later than the start time.",
+    "description": "Error message when the class end time is before its start time. Max 60 chars."
+  },
+
+  "settingsLanguage": {
+    "message": "Display language",
+    "description": "Label of a dropdown menu that chooses the language of this extension. Max 24 chars."
+  },
+  "langBrowserDefault": {
+    "message": "Same as Chrome",
+    "description": "Dropdown option: use the same language as the Chrome browser (the default). Max 24 chars."
+  },
+  "langPseudo": {
+    "message": "Pseudo-localisation (test)",
+    "description": "Dropdown option for testers: shows fake accented, longer text to test the layout. Technical term. Max 30 chars."
+  },
+  "langKeys": {
+    "message": "Show string keys (test)",
+    "description": "Dropdown option for testers: shows the technical key of every string instead of the text. Max 30 chars."
+  },
+  "settingsLanguageHint": {
+    "message": "Chrome normally uses its own language setting. Use this menu to test a translation without changing Chrome.",
+    "description": "Help text under the language dropdown. Max 120 chars."
+  },
+  "settingsShowPet": {
+    "message": "Show $PETNAME$ on web pages",
+    "description": "Checkbox label: when on, the pet walks along the bottom of the web pages you visit. Max 36 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" }
+    }
+  },
+  "settingsQaTitle": {
+    "message": "Translation check",
+    "description": "Heading of a tool that checks the selected translation file for common errors (QA = quality assurance). Max 30 chars."
+  },
+  "btnRunQa": {
+    "message": "Check",
+    "description": "Button (VERB): run the translation check on the language selected in the dropdown. Max 12 chars."
+  },
+  "qaChooseLanguage": {
+    "message": "Choose a translated language in the menu above first.",
+    "description": "Message when the translation check is run but no translated language is selected. Max 70 chars."
+  },
+  "qaAllGood": {
+    "message": "No problems found. Nice work!",
+    "description": "Result of the translation check when there are no errors. Max 50 chars."
+  },
+  "qaSummary_one": {
+    "message": "$COUNT$ possible problem found:",
+    "description": "PLURAL FORM 'one'. Heading of the translation check results when there is exactly 1 problem. Max 40 chars.",
+    "placeholders": {
+      "count": { "content": "$1", "example": "1" }
+    }
+  },
+  "qaSummary_other": {
+    "message": "$COUNT$ possible problems found:",
+    "description": "PLURAL FORM 'other'. Heading of the translation check results when there are 2 or more problems. Max 40 chars.",
+    "placeholders": {
+      "count": { "content": "$1", "example": "7" }
+    }
+  },
+  "qaMissing": {
+    "message": "Missing translation",
+    "description": "Translation check result type: the key exists in English but not in the translated file. Max 30 chars."
+  },
+  "qaEmpty": {
+    "message": "Empty translation",
+    "description": "Translation check result type: the translation is an empty text. Max 30 chars."
+  },
+  "qaPlaceholder": {
+    "message": "Placeholders do not match (expected: $EXPECTED$)",
+    "description": "Translation check result type: the $NAME$ placeholders in the translation differ from the English source. EXPECTED is a list like '$PETNAME$, $XP$'. Max 60 chars.",
+    "placeholders": {
+      "expected": { "content": "$1", "example": "$PETNAME$, $XP$" }
+    }
+  },
+  "qaTooLong": {
+    "message": "Too long: $LENGTH$ of max. $MAX$ characters",
+    "description": "Translation check result type: the translation is longer than the limit in the description. Max 50 chars.",
+    "placeholders": {
+      "length": { "content": "$1", "example": "14" },
+      "max": { "content": "$2", "example": "10" }
+    }
+  },
+  "qaSameAsSource": {
+    "message": "Same as English – is this intended?",
+    "description": "Translation check warning: the translation is identical to the English source text. Max 50 chars."
+  },
+  "qaExtraKey": {
+    "message": "Key not found in the English file",
+    "description": "Translation check result type: the translated file has a key that the English file does not have (maybe a typo in the key). Max 50 chars."
+  },
+  "qaLocaleCode": {
+    "message": "appLocale should be your locale code (e.g. $CODE$)",
+    "description": "Translation check result: the technical string 'appLocale' was not changed to the language code. Max 60 chars.",
+    "placeholders": {
+      "code": { "content": "$1", "example": "zh_TW" }
+    }
+  },
+  "qaLoadError": {
+    "message": "The file could not be read: $ERROR$",
+    "description": "Translation check result when the translated messages.json is broken (e.g. invalid JSON). ERROR is a technical message in English. Max 60 chars.",
+    "placeholders": {
+      "error": { "content": "$1", "example": "Unexpected token } in JSON at position 120" }
+    }
+  },
+  "btnResetData": {
+    "message": "Reset all data",
+    "description": "Button: delete the timetable and reset the pet and timer. Max 24 chars."
+  },
+  "confirmResetData": {
+    "message": "This will delete your timetable and reset $PETNAME$. Continue?",
+    "description": "Confirmation dialog shown before resetting all data. Max 80 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" }
+    }
+  },
+  "aboutVersion": {
+    "message": "Version $VERSION$",
+    "description": "Small text at the bottom of the Settings page showing the extension version number. Max 20 chars.",
+    "placeholders": {
+      "version": { "content": "$1", "example": "1.0.0" }
+    }
+  },
+
+  "pagePetTip1": {
+    "message": "Remember to drink some water!",
+    "description": "Speech bubble said by the pet on web pages when you click it. Friendly tip. Max 40 chars."
+  },
+  "pagePetTip2": {
+    "message": "Time to stretch your shoulders.",
+    "description": "Speech bubble said by the pet on web pages when you click it. Friendly tip. Max 40 chars."
+  },
+  "pagePetTip3": {
+    "message": "Have you checked your timetable?",
+    "description": "Speech bubble said by the pet on web pages when you click it. Max 40 chars."
+  },
+  "pagePetTip4": {
+    "message": "Small steps still count!",
+    "description": "Speech bubble said by the pet on web pages when you click it. Encouraging. Max 40 chars."
+  },
+  "pagePetTip5": {
+    "message": "Psst… click my icon to start a timer.",
+    "description": "Speech bubble on web pages. 'my icon' = the extension icon in the Chrome toolbar. Max 40 chars."
+  },
+  "pagePetTip6": {
+    "message": "Don't forget to blink!",
+    "description": "Speech bubble said by the pet on web pages (reminder to rest your eyes). Max 40 chars."
+  },
+  "pagePetMinutesLeft_one": {
+    "message": "$COUNT$ minute to go. Keep going!",
+    "description": "PLURAL FORM 'one'. Speech bubble on web pages while a focus session is running and 1 minute is left. Max 40 chars.",
+    "placeholders": {
+      "count": { "content": "$1", "example": "1" }
+    }
+  },
+  "pagePetMinutesLeft_other": {
+    "message": "$COUNT$ minutes to go. Keep going!",
+    "description": "PLURAL FORM 'other'. Speech bubble on web pages while a focus session is running and 2 or more minutes are left. Max 40 chars.",
+    "placeholders": {
+      "count": { "content": "$1", "example": "18" }
+    }
+  },
+  "pagePetFocusDone": {
+    "message": "We did it! Break time!",
+    "description": "Speech bubble on web pages when a focus session has just finished. Max 40 chars."
+  },
+  "pagePetHide": {
+    "message": "Hide $PETNAME$",
+    "description": "Tooltip for the small × button next to the pet on web pages. Max 24 chars.",
+    "placeholders": {
+      "petname": { "content": "$1", "example": "Pip" }
+    }
+  }
+}

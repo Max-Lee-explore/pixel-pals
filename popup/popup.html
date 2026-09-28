@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title data-i18n="extName">Pixel Pals</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="pet" data-i18n="tabPet"></button>
+    <button class="tab" role="tab" data-tab="focus" data-i18n="tabFocus"></button>
+    <button class="tab" role="tab" data-tab="timetable" data-i18n="tabTimetable"></button>
+    <button class="tab" role="tab" data-tab="settings" data-i18n="tabSettings"></button>
+  </nav>
+
+  <main>
+    <!-- Pet -->
+    <section class="panel" id="panel-pet" role="tabpanel">
+      <form id="adoptView" hidden novalidate>
+        <h2 class="center" data-i18n="adoptTitle"></h2>
+        <div class="species-grid" id="speciesGrid" role="radiogroup"></div>
+        <label class="full"><span data-i18n="adoptNameLabel"></span>
+          <input type="text" id="adoptName" maxlength="12" autocomplete="off">
+        </label>
+        <button class="btn primary block" type="submit" data-i18n="btnAdopt"></button>
+      </form>
+
+      <div id="petView" hidden>
+      <div class="pet-stage">
+        <div class="bubble" id="petBubble" hidden></div>
+        <img class="pet" id="petImg" alt="">
+      </div>
+      <h1 class="greeting" id="petGreeting"></h1>
+      <p class="mood" id="petMood"></p>
+
+      <div class="level-row">
+        <span class="badge" id="petLevel"></span>
+        <span class="muted" id="petXp"></span>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label"><span data-i18n="statHappiness"></span><span id="happyVal"></span></div>
+        <div class="bar"><div class="bar-fill happy" id="happyBar"></div></div>
+      </div>
+      <div class="stat">
+        <div class="stat-label"><span data-i18n="statEnergy"></span><span id="energyVal"></span></div>
+        <div class="bar"><div class="bar-fill energy" id="energyBar"></div></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" data-pet-action="feed" data-i18n="btnFeed"></button>
+        <button class="btn primary" data-pet-action="play" data-i18n="btnPlay"></button>
+        <button class="btn primary" data-pet-action="nap" data-i18n="btnNap"></button>
+      </div>
+      </div>
+    </section>
+
+    <!-- Focus -->
+    <section class="panel" id="panel-focus" role="tabpanel" hidden>
+      <h2 data-i18n="focusTitle"></h2>
+      <div class="ring">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="ring-bg" cx="100" cy="100" r="88"/>
+          <circle class="ring-fg" id="ringFg" cx="100" cy="100" r="88"/>
+        </svg>
+        <div class="ring-text">
+          <div class="clock" id="clock">25:00</div>
+          <div class="phase" id="phaseLabel"></div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="btnStartPause"></button>
+        <button class="btn ghost" id="btnReset" data-i18n="btnReset"></button>
+      </div>
+      <div class="lengths">
+        <label><span data-i18n="focusLengthLabel"></span><input type="number" id="focusMin" min="1" max="120"></label>
+        <label><span data-i18n="breakLengthLabel"></span><input type="number" id="breakMin" min="1" max="60"></label>
+      </div>
+      <p class="sessions" id="sessionsText"></p>
+      <p class="muted small" id="focusTip"></p>
+    </section>
+
+    <!-- Timetable -->
+    <section class="panel" id="panel-timetable" role="tabpanel" hidden>
+      <h2 data-i18n="ttTitle"></h2>
+      <div class="callout" id="ttNext"></div>
+      <div id="ttWeek"></div>
+
+      <form class="card form" id="ttForm" novalidate>
+        <h3 data-i18n="ttAddHeading"></h3>
+        <label class="full"><span data-i18n="fieldClassName"></span>
+          <input type="text" id="ttName" maxlength="40" data-i18n-placeholder="placeholderClassName">
+        </label>
+        <div class="row">
+          <label><span data-i18n="fieldDay"></span><select id="ttDay"></select></label>
+          <label><span data-i18n="fieldStart"></span><input type="time" id="ttStart" value="09:00"></label>
+          <label><span data-i18n="fieldEnd"></span><input type="time" id="ttEnd" value="10:30"></label>
+        </div>
+        <label class="full"><span data-i18n="fieldRoom"></span>
+          <input type="text" id="ttRoom" maxlength="20" data-i18n-placeholder="placeholderRoom">
+        </label>
+        <p class="error" id="ttError" role="alert" hidden></p>
+        <button class="btn primary" type="submit" data-i18n="btnAddClass"></button>
+      </form>
+    </section>
+
+    <!-- Settings -->
+    <section class="panel" id="panel-settings" role="tabpanel" hidden>
+      <div class="card">
+        <label class="full"><span class="label-strong" data-i18n="settingsLanguage"></span>
+          <select id="langSelect"></select>
+        </label>
+        <p class="muted small" data-i18n="settingsLanguageHint"></p>
+        <p class="error" id="langError" hidden></p>
+      </div>
+
+      <form class="card" id="petSettings" novalidate>
+        <h3 class="card-title" data-i18n="settingsPetTitle"></h3>
+        <div class="row two">
+          <label><span data-i18n="fieldPetName"></span><input type="text" id="setPetName" maxlength="12" autocomplete="off"></label>
+          <label><span data-i18n="fieldSpecies"></span><select id="setSpecies"></select></label>
+        </div>
+        <div class="save-row">
+          <span class="qa-ok small" id="petSavedMsg" hidden></span>
+          <button class="btn small primary" type="submit" data-i18n="btnSavePet"></button>
+        </div>
+      </form>
+
+      <div class="card">
+        <label class="check"><input type="checkbox" id="showPagePet"><span id="showPagePetLabel"></span></label>
+      </div>
+
+      <div class="card">
+        <div class="qa-head">
+          <h3 data-i18n="settingsQaTitle"></h3>
+          <button class="btn small" id="btnRunQa" data-i18n="btnRunQa"></button>
+        </div>
+        <div id="qaResults"></div>
+      </div>
+
+      <button class="btn danger" id="btnResetData" data-i18n="btnResetData"></button>
+      <p class="muted small center" id="version"></p>
+    </section>
+  </main>
+
+  <script src="../lib/i18n.js"></script>
+  <script src="../lib/store.js"></script>
+  <script src="qa.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
