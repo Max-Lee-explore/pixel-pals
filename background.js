@@ -43,7 +43,7 @@ async function timerAction(action, payload = {}) {
 
 async function onTimerFinished() {
   const timer = await Store.get('timer');
-  if (timer.status !== 'running') return;
+  if (timer.status !== 'running' || timer.endsAt > Date.now() + 1000) return;
   await I18n.init();
   const petName = Store.petName(await Store.get('pet'), I18n.t);
 
@@ -66,13 +66,36 @@ async function onTimerFinished() {
   await Store.set('timer', timer);
 }
 
+// Chrome may drop alarms when the browser restarts, so a session that was
+// running when Chrome closed is finished (or re-armed) whenever the worker wakes.
+async function resumeTimer() {
+  const timer = await Store.get('timer');
+  if (timer.status !== 'running') return;
+  if (timer.endsAt <= Date.now()) {
+    await onTimerFinished();
+    await resumeTimer();
+  } else if (!(await chrome.alarms.get(ALARM))) {
+    await chrome.alarms.create(ALARM, { when: timer.endsAt });
+  }
+}
+
+// Serialised so a late alarm and the startup check can't both award a session.
+let queue = Promise.resolve();
+function serial(task) {
+  const run = queue.then(task);
+  queue = run.catch((err) => console.error(err));
+  return run;
+}
+
+serial(resumeTimer);
+
 chrome.alarms.onAlarm.addListener((alarm) => {
-  if (alarm.name === ALARM) onTimerFinished();
+  if (alarm.name === ALARM) serial(onTimerFinished);
 });
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg?.type === 'timer') {
-    timerAction(msg.action, msg.payload).then(sendResponse);
+    serial(() => timerAction(msg.action, msg.payload)).then(sendResponse);
     return true;
   }
   if (msg?.type === 'loadJson') {
