@@ -139,7 +139,8 @@ h3 { font-size: 15px; }
 .wear span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .wear[aria-checked="true"] { border-color: var(--primary); background: #fff1eb; }
 .wear:disabled { cursor: not-allowed; color: var(--muted); }
-.wear:disabled .wear-fig { filter: grayscale(1); opacity: .45; }
+.wear:disabled .wear-fig img:not(.acc) { filter: grayscale(1); opacity: .35; }
+.wear:disabled .wear-fig .acc { filter: brightness(0); opacity: .85; }
 .wear-lock {
   position: absolute;
   top: 2px;

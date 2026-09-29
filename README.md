@@ -9,13 +9,13 @@ Adopt a pixel-art **cat, dog, rabbit or hamster**, give it a name, and it lives 
 | **Sad** | <img src="docs/pets/cat-sad.png" width="96" alt="Cat, sad"> | <img src="docs/pets/dog-sad.png" width="96" alt="Dog, sad"> | <img src="docs/pets/rabbit-sad.png" width="96" alt="Rabbit, sad"> | <img src="docs/pets/hamster-sad.png" width="96" alt="Hamster, sad"> |
 
 - **Pet** – feed, play with and put your pet to sleep; watch happiness, energy, XP and level. Pets level up from playing and from finished focus sessions.
-- **Wardrobe and titles** – levelling up unlocks accessories your pet can wear and gives it new titles:
+- **Wardrobe and titles** – levelling up unlocks four secret accessories your pet can wear, and gives it new titles. Level up to find out what they are!
 
   | Level | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 |
   |---|---|---|---|---|---|---|---|---|---|
-  | Unlocks | Newcomer | Bow | Study Buddy | Glasses | Bookworm | Graduation cap | Scholar | Crown | Professor |
+  | Unlocks | Newcomer | 🔒 ??? | Study Buddy | 🔒 ??? | Bookworm | 🔒 ??? | Scholar | 🔒 ??? | Professor |
 
-  <img src="docs/accessories.png" width="540" alt="Each pet with no accessory, a bow, glasses, a graduation cap and a crown">
+  <img src="docs/accessories.png" width="540" alt="Each pet next to four locked accessories, shown only as dark silhouettes">
 
 - **Focus** – a study timer (Pomodoro). Every finished session gives your pet XP and sends a desktop notification.
 - **Timetable** – add your weekly classes and see what's next today.
@@ -25,7 +25,7 @@ Adopt a pixel-art **cat, dog, rabbit or hamster**, give it a name, and it lives 
 The extension is written in **English**. All interface text lives in one file:
 
 ```
-_locales/en/messages.json      ← 124 strings, about 440 words
+_locales/en/messages.json      ← 126 strings, about 445 words
 ```
 
 Your task is to translate this file in **Phrase TMS**, put the translated file back into the extension, and test the localised extension in Chrome.
@@ -108,7 +108,7 @@ Read the context note for **every** segment. Look out for:
 - **User content** – the name the user types for their pet is *not* in the file and is never translated. Test your strings with a long name, a short name and a name in another script.
 - **Animal names** – `speciesCat`, `speciesDog` … appear under small pictures and in a dropdown, so keep them short.
 - **Titles** – `titleNewcomer` … `titleProfessor` are ranks shown under the pet's name. They must work for any animal and any pet name, so avoid words that only fit one gender or one animal. They are also inserted into `reactNewTitle` ("Level 5! New title: Bookworm") – check the grammar there.
-- **Accessories** – `accBow`, `accGlasses`, `accCap`, `accCrown` label tiny wardrobe buttons (max 10 characters). Read the descriptions: "Bow" is a ribbon, not a weapon; "Glasses" are spectacles.
+- **Accessories** – the `acc…` item names label tiny wardrobe buttons (max 10 characters). Some of them are ambiguous in English, so read each description before you translate. Locked items show `accSecret` ("???") instead of their name – decide whether your language keeps "???" or uses something else.
 - **Abbreviations and conventions** – `e.g.`, `min`, `XP`, the time-range dash in `$START$–$END$`.
 - **Tone** – the pet's speech bubbles (`react…`, `pagePetTip…`) are playful; buttons and error messages are neutral.
 - **Technical string** – `appLocale` is **not** a word to translate. Replace `en` with your locale code (see the table in 4.1). It controls date, time and number formatting.
@@ -176,7 +176,7 @@ If Chrome shows an error and refuses to load the extension, your file is usually
    - [ ] Timetable – add classes, trigger both error messages (empty name; end time before start time), check weekday names, time format and the "Next up" box. Hover over the × button to see its tooltip.
    - [ ] Web pages – open any website, click your pet for tips; while a focus session is running, click it to see the "minutes to go" message. Hover to see the × tooltip.
    - [ ] Adoption and level-up – *Settings → Reset all data* shows the adoption screen again: check the animal names and the suggested names. Play with your pet until it levels up to see the level-up message.
-   - [ ] Wardrobe and titles – at level 2 the pet gets a bow, at level 3 a new title. Check both level-up messages, the title under the name, every wardrobe label, and the "Unlocks at level …" tooltip on locked items. Focus sessions give 20 XP each, so a few short 1-minute sessions level the pet up quickly.
+   - [ ] Wardrobe and titles – at level 2 the pet unlocks its first secret item, at level 3 a new title. Check both level-up messages, the title under the name, every wardrobe label, and the "Unlocks at level …" tooltip on locked items. Focus sessions give 20 XP each, so a few short 1-minute sessions level the pet up quickly.
    - [ ] Pet name – rename your pet in *Settings → Your pet* (try a long name) and check every sentence that contains the name.
    - [ ] Is the terminology consistent across screens (e.g. "focus session", "break", "XP")?
 4. Fix issues in Phrase (keep your TM up to date!), export again, replace the file, reload and re-test.

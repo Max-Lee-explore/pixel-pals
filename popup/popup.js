@@ -108,7 +108,7 @@ function renderWardrobe(pet) {
   box.replaceChildren();
   for (const item of [{ id: null, level: 1 }, ...Store.ACCESSORIES]) {
     const locked = pet.level < item.level;
-    const name = t(item.id ? Store.accessoryKey(item.id) : 'accNone');
+    const name = locked ? t('accSecret') : t(item.id ? Store.accessoryKey(item.id) : 'accNone');
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'wear';
@@ -116,7 +116,7 @@ function renderWardrobe(pet) {
     btn.setAttribute('aria-checked', String((pet.accessory || null) === item.id));
     btn.disabled = locked;
     btn.title = locked ? t('accLocked', [I18n.number(item.level)]) : name;
-    btn.setAttribute('aria-label', locked ? `${name}: ${btn.title}` : name);
+    btn.setAttribute('aria-label', locked ? `${t('accSecretItem')}: ${btn.title}` : name);
 
     const fig = document.createElement('div');
     fig.className = 'wear-fig';

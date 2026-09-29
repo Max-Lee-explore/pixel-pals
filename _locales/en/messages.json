@@ -172,6 +172,14 @@
     "message": "Crown",
     "description": "Accessory: a gold crown, like a king or queen wears. Max 10 chars."
   },
+  "accSecret": {
+    "message": "???",
+    "description": "Label under a locked wardrobe item, so its name stays a surprise until it is unlocked. Usually kept as '???'. Max 10 chars."
+  },
+  "accSecretItem": {
+    "message": "Secret item",
+    "description": "Read by screen readers for a locked wardrobe item whose name is still hidden. Max 20 chars."
+  },
   "accLocked": {
     "message": "Unlocks at level $LEVEL$",
     "description": "Tooltip on a wardrobe item the pet cannot wear yet. Max 40 chars.",
