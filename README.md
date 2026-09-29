@@ -15,8 +15,6 @@ Adopt a pixel-art **cat, dog, rabbit or hamster**, give it a name, and it lives 
   |---|---|---|---|---|---|---|---|---|---|
   | Unlocks | Newcomer | 🔒 ??? | Study Buddy | 🔒 ??? | Bookworm | 🔒 ??? | Scholar | 🔒 ??? | Professor |
 
-  <img src="docs/accessories.png" width="540" alt="Each pet next to four locked accessories, shown only as dark silhouettes">
-
 - **Focus** – a study timer (Pomodoro). Every finished session gives your pet XP and sends a desktop notification.
 - **Timetable** – add your weekly classes and see what's next today.
 - **Pet on web pages** – your pet walks along the bottom of the websites you visit and gives tips when you click it.
@@ -213,7 +211,7 @@ lib/store.js             Pet (species, name, XP, level), timer and timetable dat
 images/pets/             16×16 pixel-art sprites: <animal>-idle / -sleep / -sad.png
                          and see-through accessory layers: acc-<item>.png
 icons/                   Toolbar icons (regenerate with: python3 tools/make_icons.py)
-docs/                    Enlarged sprite previews and the accessory sheet for this README (same script)
+docs/pets/               Enlarged sprite previews for this README (same script)
 ```
 
 The sprites were drawn in Cursor with the [Pixel Art MCP server](https://github.com/adrianoamaral/pixel-mcp) (`pxcli-mcp`), which exports straight into `images/pets/`.

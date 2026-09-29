@@ -1,7 +1,6 @@
 """Builds the toolbar icons (icons/icon{16,32,48,128}.png) from the cat sprite,
-128px README previews of every pet sprite (docs/pets/*.png), and a sheet of
-every pet with each accessory as a dark "locked" silhouette, so the README
-doesn't spoil them (docs/accessories.png).
+and 128px README previews of every pet sprite (docs/pets/*.png). Accessories
+are left out of the README on purpose, so students discover them in the game.
 
 The pet sprites in images/pets/ were drawn with the Pixel Art MCP server
 (https://github.com/adrianoamaral/pixel-mcp). This script only scales the
@@ -52,14 +51,13 @@ def read_png(path):
     return width, height, rows
 
 
-def write_png(path, size, pixel, height=None):
-    height = height or size
-    raw = b''.join(b'\x00' + b''.join(pixel(x, y) for x in range(size)) for y in range(height))
+def write_png(path, size, pixel):
+    raw = b''.join(b'\x00' + b''.join(pixel(x, y) for x in range(size)) for y in range(size))
 
     def chunk(kind, body):
         return struct.pack('>I', len(body)) + kind + body + struct.pack('>I', zlib.crc32(kind + body) & 0xFFFFFFFF)
 
-    header = struct.pack('>IIBBBBB', size, height, 8, 6, 0, 0, 0)
+    header = struct.pack('>IIBBBBB', size, size, 8, 6, 0, 0, 0)
     with open(path, 'wb') as f:
         f.write(b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', header) + chunk(b'IDAT', zlib.compress(raw, 9)) + chunk(b'IEND', b''))
 
@@ -71,40 +69,6 @@ def scale(source, dest, size):
         sx, sy = x * w // size, y * h // size
         return rows[sy][sx * 4:sx * 4 + 4]
     write_png(dest, size, pixel)
-
-
-SPECIES = ['cat', 'dog', 'rabbit', 'hamster']
-ACCESSORIES = ['bow', 'glasses', 'cap', 'crown']
-HEAD_LIFT = {'dog': -2, 'hamster': -1}  # keep in sync with lib/store.js
-
-
-SILHOUETTE = b'\x1d\x1b\x26\xff'
-
-
-def accessory_sheet(pets_dir, dest, scale=6, top=3, gap=2):
-    cols = [None] + ACCESSORIES
-    cell_w, cell_h = 16 + gap, 16 + top + gap
-    width, height = cell_w * len(cols), cell_h * len(SPECIES)
-    grid = [[b'\x00\x00\x00\x00'] * width for _ in range(height)]
-
-    def blit(name, ox, oy, colour=None):
-        w, h, rows = read_png(os.path.join(pets_dir, name))
-        for y in range(h):
-            for x in range(w):
-                px = rows[y][x * 4:x * 4 + 4]
-                if px[3] and 0 <= oy + y < height:
-                    grid[oy + y][ox + x] = colour or px
-
-    for r, species in enumerate(SPECIES):
-        for c, acc in enumerate(cols):
-            ox, oy = c * cell_w + gap // 2, r * cell_h + top + gap // 2
-            blit(f'{species}-idle.png', ox, oy)
-            if acc == 'glasses':
-                blit('acc-glasses-dog.png' if species == 'dog' else 'acc-glasses.png', ox, oy, SILHOUETTE)
-            elif acc:
-                blit(f'acc-{acc}.png', ox, oy + HEAD_LIFT.get(species, 0), SILHOUETTE)
-
-    write_png(dest, width * scale, lambda x, y: grid[y // scale][x // scale], height * scale)
 
 
 if __name__ == '__main__':
@@ -120,5 +84,4 @@ if __name__ == '__main__':
     for name in sorted(os.listdir(pets_dir)):
         if name.endswith('.png') and not name.startswith('acc-'):
             scale(os.path.join(pets_dir, name), os.path.join(docs_dir, name), 128)
-    accessory_sheet(pets_dir, os.path.join(ROOT, 'docs', 'accessories.png'))
-    print('README previews written to', os.path.abspath(os.path.join(ROOT, 'docs')))
+    print('README previews written to', os.path.abspath(docs_dir))
