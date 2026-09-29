@@ -28,9 +28,13 @@
       <div id="petView" hidden>
       <div class="pet-stage">
         <div class="bubble" id="petBubble" hidden></div>
-        <img class="pet" id="petImg" alt="">
+        <div class="pet" id="petFigure">
+          <img id="petImg" alt="">
+          <img class="acc" id="petAcc" alt="" hidden>
+        </div>
       </div>
       <h1 class="greeting" id="petGreeting"></h1>
+      <p class="pet-title"><span id="petTitle"></span></p>
       <p class="mood" id="petMood"></p>
 
       <div class="level-row">
@@ -52,6 +56,9 @@
         <button class="btn primary" data-pet-action="play" data-i18n="btnPlay"></button>
         <button class="btn primary" data-pet-action="nap" data-i18n="btnNap"></button>
       </div>
+
+      <h3 class="wardrobe-title" id="wardrobeTitle" data-i18n="wardrobeTitle"></h3>
+      <div class="wardrobe" id="wardrobe" role="radiogroup" aria-labelledby="wardrobeTitle"></div>
       </div>
     </section>
 

@@ -15,8 +15,11 @@
     }
     .pet { width: 100%; height: 100%; cursor: pointer; animation: hop .4s steps(2) infinite paused; }
     .wrap.walking .pet { animation-play-state: running; }
-    .pet img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
-    .wrap.flip .pet img { transform: scaleX(-1); }
+    .fig { position: relative; width: 100%; height: 100%; }
+    .fig img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+    .fig .acc { transform: translateY(calc(var(--lift, 0) * 6.25%)); }
+    .fig .acc[hidden] { display: none; }
+    .wrap.flip .fig { transform: scaleX(-1); }
     .bubble {
       position: absolute; bottom: ${SIZE + 6}px; left: 50%; transform: translateX(-50%);
       width: max-content; max-width: 220px;
@@ -84,9 +87,16 @@
     if (!host) return;
     const pet = await Store.get('pet');
     const name = Store.petName(pet, I18n.t);
-    const img = host.shadowRoot.querySelector('.pet img');
+    const img = host.shadowRoot.querySelector('.fig .body');
     img.src = Store.spriteUrl(pet.species);
     img.alt = name;
+    const acc = host.shadowRoot.querySelector('.fig .acc');
+    acc.hidden = !pet.accessory;
+    if (pet.accessory) {
+      const { url, lift } = Store.accessoryImage(pet.accessory, pet.species);
+      acc.src = url;
+      acc.style.setProperty('--lift', lift);
+    }
     const close = host.shadowRoot.querySelector('.close');
     close.title = I18n.t('pagePetHide', [name]);
     close.setAttribute('aria-label', close.title);
@@ -103,7 +113,7 @@
       <style>${STYLE}</style>
       <div class="wrap">
         <div class="bubble" hidden></div>
-        <div class="pet" role="button" tabindex="0"><img alt=""></div>
+        <div class="pet" role="button" tabindex="0"><div class="fig"><img class="body" alt=""><img class="acc" alt="" hidden></div></div>
         <button class="close">×</button>
       </div>`;
     root.querySelector('.pet').addEventListener('click', onPetClick);
@@ -135,7 +145,7 @@
       }
       const event = changes.pageEvent?.newValue;
       if (event && document.visibilityState === 'visible') {
-        say(event.type === 'levelUp' ? I18n.t('reactLevelUp', [I18n.number(event.level)]) : I18n.t('pagePetFocusDone'));
+        say(event.type === 'levelUp' ? Store.levelUpMessage(event, I18n.t, I18n.number) : I18n.t('pagePetFocusDone'));
       }
     });
   }

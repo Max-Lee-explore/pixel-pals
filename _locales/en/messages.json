@@ -128,6 +128,57 @@
       "total": { "content": "$2", "example": "100" }
     }
   },
+  "titleNewcomer": {
+    "message": "Newcomer",
+    "description": "Pet title (rank) from level 1, shown under the pet's name. Must suit any animal and any pet name. Max 20 chars."
+  },
+  "titleStudyBuddy": {
+    "message": "Study Buddy",
+    "description": "Pet title (rank) from level 3: a friend you study with. Must suit any animal. Max 20 chars."
+  },
+  "titleBookworm": {
+    "message": "Bookworm",
+    "description": "Pet title (rank) from level 5: someone who loves reading. NOT an insect. Must suit any animal. Max 20 chars."
+  },
+  "titleScholar": {
+    "message": "Scholar",
+    "description": "Pet title (rank) from level 8: a learned, studious person. Must suit any animal. Max 20 chars."
+  },
+  "titleProfessor": {
+    "message": "Professor",
+    "description": "Pet title (rank) from level 12, the highest. University teacher, used playfully. Must suit any animal. Max 20 chars."
+  },
+  "wardrobeTitle": {
+    "message": "Wardrobe",
+    "description": "Heading above the accessories the pet can wear. Max 20 chars."
+  },
+  "accNone": {
+    "message": "None",
+    "description": "Wardrobe option: the pet wears no accessory. Max 10 chars."
+  },
+  "accBow": {
+    "message": "Bow",
+    "description": "Accessory: a ribbon bow worn on the head. NOT a bow and arrow, NOT bowing. Max 10 chars."
+  },
+  "accGlasses": {
+    "message": "Glasses",
+    "description": "Accessory: a pair of reading glasses (spectacles). NOT drinking glasses. Max 10 chars."
+  },
+  "accCap": {
+    "message": "Grad cap",
+    "description": "Accessory: a graduation cap (square academic hat, mortarboard). Max 10 chars."
+  },
+  "accCrown": {
+    "message": "Crown",
+    "description": "Accessory: a gold crown, like a king or queen wears. Max 10 chars."
+  },
+  "accLocked": {
+    "message": "Unlocks at level $LEVEL$",
+    "description": "Tooltip on a wardrobe item the pet cannot wear yet. Max 40 chars.",
+    "placeholders": {
+      "level": { "content": "$1", "example": "6" }
+    }
+  },
   "btnFeed": {
     "message": "Feed",
     "description": "Button (VERB, imperative): give food to the pet. NOT a news feed. Max 8 chars."
@@ -189,6 +240,22 @@
     "description": "Speech bubble said by the pet when it reaches a new level (game term). Excited. Max 32 chars.",
     "placeholders": {
       "level": { "content": "$1", "example": "4" }
+    }
+  },
+  "reactNewItem": {
+    "message": "Level $LEVEL$! New item: $ITEM$",
+    "description": "Speech bubble when a level-up unlocks an accessory, which the pet puts on. ITEM is an accessory name such as 'Glasses'. Max 40 chars.",
+    "placeholders": {
+      "level": { "content": "$1", "example": "4" },
+      "item": { "content": "$2", "example": "Glasses" }
+    }
+  },
+  "reactNewTitle": {
+    "message": "Level $LEVEL$! New title: $TITLE$",
+    "description": "Speech bubble when a level-up gives the pet a new title (rank). TITLE is a title such as 'Bookworm'. Max 40 chars.",
+    "placeholders": {
+      "level": { "content": "$1", "example": "5" },
+      "title": { "content": "$2", "example": "Bookworm" }
     }
   },
   "reactNap": {

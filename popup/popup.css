@@ -99,15 +99,59 @@ h3 { font-size: 15px; }
 }
 
 /* Pet */
-.pet-stage { position: relative; display: flex; justify-content: center; padding-block-start: 28px; }
+.pet-stage { position: relative; display: flex; justify-content: center; padding-block-start: 44px; }
 .pet {
+  position: relative;
   width: 160px;
   height: 160px;
-  image-rendering: pixelated;
   animation: breathe 3s steps(2) infinite;
   transform-origin: 50% 100%;
 }
 .pet.bounce { animation: bounce .5s steps(3) 2; }
+.pet img { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+/* --lift is in sprite pixels; 6.25% of the image height is one of its 16 rows. */
+.pet .acc { transform: translateY(calc(var(--lift, 0) * 6.25%)); }
+.pet-title { text-align: center; margin: 2px 0 0; }
+.pet-title span { background: #fff1eb; color: var(--primary-dark); border-radius: 999px; padding: 1px 10px; font-size: 12px; font-weight: 700; }
+
+.wardrobe-title { font-size: 13px; margin-block: 14px 6px; }
+.wardrobe { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.wear {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 2px;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  min-width: 0;
+}
+.wear-fig { position: relative; width: 40px; height: 40px; }
+.wear-fig img { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+.wear-fig .acc { transform: translateY(calc(var(--lift, 0) * 6.25%)); }
+.wear span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wear[aria-checked="true"] { border-color: var(--primary); background: #fff1eb; }
+.wear:disabled { cursor: not-allowed; color: var(--muted); }
+.wear:disabled .wear-fig { filter: grayscale(1); opacity: .45; }
+.wear-lock {
+  position: absolute;
+  top: 2px;
+  inset-inline-end: 2px;
+  min-width: 16px;
+  border-radius: 999px;
+  background: var(--muted);
+  color: #fff;
+  font-size: 10px;
+  line-height: 16px;
+  padding: 0 3px;
+}
 
 .species-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-block: 14px; }
 .species {
@@ -148,6 +192,7 @@ h3 { font-size: 15px; }
   overflow: hidden;
   text-overflow: ellipsis;
   animation: pop .2s ease;
+  z-index: 2;
 }
 [dir="rtl"] .bubble { transform: translateX(50%); }
 

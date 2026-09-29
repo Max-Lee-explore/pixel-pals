@@ -49,7 +49,7 @@ async function onTimerFinished() {
 
   if (timer.phase === 'focus') {
     await Store.addSession();
-    const { pet, levelUp } = await Store.updatePet('focusDone');
+    const { pet, levelUp, newItem, newTitle } = await Store.updatePet('focusDone');
     Object.assign(timer, {
       phase: 'break',
       status: 'running',
@@ -57,7 +57,7 @@ async function onTimerFinished() {
       remainingMs: timer.breakMin * MINUTE
     });
     await chrome.alarms.create(ALARM, { when: timer.endsAt });
-    await Store.set('pageEvent', { type: levelUp ? 'levelUp' : 'focusDone', level: pet.level, at: Date.now() });
+    await Store.set('pageEvent', { type: levelUp ? 'levelUp' : 'focusDone', level: pet.level, newItem, newTitle, at: Date.now() });
     await notify('notifFocusDoneTitle', 'notifFocusDoneBody', [petName, I18n.number(Store.FOCUS_XP), I18n.number(timer.breakMin)]);
   } else {
     Object.assign(timer, { phase: 'focus', status: 'idle', endsAt: 0, remainingMs: timer.focusMin * MINUTE });

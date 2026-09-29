@@ -56,9 +56,13 @@ async function setupTabs() {
 /* ---------- Pet ---------- */
 
 function say(key, subs) {
+  sayText(t(key, subs));
+}
+
+function sayText(text) {
   const bubble = $('#petBubble');
-  bubble.textContent = t(key, subs);
-  bubble.title = bubble.textContent;
+  bubble.textContent = text;
+  bubble.title = text;
   bubble.hidden = false;
   clearTimeout(bubbleTimer);
   bubbleTimer = setTimeout(() => { bubble.hidden = true; }, 2800);
@@ -76,8 +80,10 @@ async function renderPet() {
   const src = Store.spriteUrl(pet.species, sleeping ? 'sleep' : mood === 'moodSad' ? 'sad' : 'idle');
   if (petEl.src !== src) petEl.src = src;
   petEl.alt = petName;
+  showAccessory($('#petAcc'), pet.accessory, pet.species);
 
   $('#petGreeting').textContent = t('petGreeting', [petName]);
+  $('#petTitle').textContent = t(Store.titleKey(pet.level));
   $('#petMood').textContent = t(mood, [petName]);
   $('#petLevel').textContent = t('statLevel', [I18n.number(pet.level)]);
   $('#petXp').textContent = t('statXp', [I18n.number(pet.xp), I18n.number(Store.xpForLevel(pet.level))]);
@@ -85,18 +91,72 @@ async function renderPet() {
   $('#energyVal').textContent = I18n.number(pet.energy);
   $('#happyBar').style.width = `${pet.happiness}%`;
   $('#energyBar').style.width = `${pet.energy}%`;
+  renderWardrobe(pet);
+}
+
+function showAccessory(img, id, species) {
+  img.hidden = !id;
+  if (!id) return;
+  const { url, lift } = Store.accessoryImage(id, species);
+  if (img.src !== url) img.src = url;
+  img.style.setProperty('--lift', lift);
+}
+
+function renderWardrobe(pet) {
+  const box = $('#wardrobe');
+  const hadFocus = box.contains(document.activeElement);
+  box.replaceChildren();
+  for (const item of [{ id: null, level: 1 }, ...Store.ACCESSORIES]) {
+    const locked = pet.level < item.level;
+    const name = t(item.id ? Store.accessoryKey(item.id) : 'accNone');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'wear';
+    btn.setAttribute('role', 'radio');
+    btn.setAttribute('aria-checked', String((pet.accessory || null) === item.id));
+    btn.disabled = locked;
+    btn.title = locked ? t('accLocked', [I18n.number(item.level)]) : name;
+    btn.setAttribute('aria-label', locked ? `${name}: ${btn.title}` : name);
+
+    const fig = document.createElement('div');
+    fig.className = 'wear-fig';
+    const body = document.createElement('img');
+    body.src = Store.spriteUrl(pet.species);
+    body.alt = '';
+    const acc = document.createElement('img');
+    acc.className = 'acc';
+    acc.alt = '';
+    showAccessory(acc, item.id, pet.species);
+    fig.append(body, acc);
+
+    const label = document.createElement('span');
+    label.textContent = name;
+    btn.append(fig, label);
+    if (locked) {
+      const lock = document.createElement('span');
+      lock.className = 'wear-lock';
+      lock.textContent = I18n.number(item.level);
+      btn.append(lock);
+    }
+    btn.addEventListener('click', async () => {
+      await Store.setAccessory(item.id);
+      renderPet();
+    });
+    box.append(btn);
+  }
+  if (hadFocus) box.querySelector('[aria-checked="true"]')?.focus();
 }
 
 function setupPet() {
   document.querySelectorAll('[data-pet-action]').forEach((btn) => {
     btn.title = btn.textContent;
     btn.addEventListener('click', async () => {
-      const { pet, reaction, levelUp } = await Store.updatePet(btn.dataset.petAction);
-      const petEl = $('#petImg');
+      const { pet, reaction, levelUp, newItem, newTitle } = await Store.updatePet(btn.dataset.petAction);
+      const petEl = $('#petFigure');
       petEl.classList.remove('bounce');
       void petEl.offsetWidth;
       if (reaction === 'reactFeed' || reaction === 'reactPlay') petEl.classList.add('bounce');
-      if (levelUp) say('reactLevelUp', [I18n.number(pet.level)]);
+      if (levelUp) sayText(Store.levelUpMessage({ level: pet.level, newItem, newTitle }, t, I18n.number));
       else say(reaction);
       await renderPet();
       if (reaction === 'reactNap') setTimeout(renderPet, 4100);
