@@ -118,7 +118,7 @@ Run **QA** in the Phrase editor and fix at least: missing/extra tags, empty segm
 
 ### 3.4 Export
 
-Mark the job as **Completed** and download the target file. Phrase may name it differently (e.g. `messages_zh_TW.json` or with a job number). **Rename it to exactly `messages.json`.**
+Mark the job as **Completed** and download the target file. Phrase may name it differently (e.g. `messages_zh_HK.json` or with a job number). **Rename it to exactly `messages.json`.**
 
 ---
 
@@ -133,13 +133,13 @@ chromeplugin/
 └── _locales/
     ├── en/
     │   └── messages.json
-    └── zh_TW/            ← your new folder
+    └── zh_HK/            ← your new folder
         └── messages.json ← your translated file
 ```
 
 | Language | Folder name |
 | --- | --- |
-| Chinese (Traditional) | `zh_TW` |
+| Chinese (Hong Kong) | `zh_HK` |
 | Chinese (Simplified) | `zh_CN` |
 | Japanese | `ja` |
 | Korean | `ko` |
@@ -148,7 +148,7 @@ chromeplugin/
 | German | `de` |
 | Portuguese (Brazil) | `pt_BR` |
 
-Use an **underscore**, not a hyphen (`zh_TW`, not `zh-TW`). Chrome only accepts the codes in its [list of supported locales](https://developer.chrome.com/docs/extensions/reference/api/i18n#locales).
+Use an **underscore**, not a hyphen (`zh_HK`, not `zh-HK`). Chrome's [list of supported locales](https://developer.chrome.com/docs/extensions/reference/api/i18n#locales) uses `zh_TW` for Traditional Chinese; this course uses `zh_HK`. Put your file in `_locales/zh_HK/` and pick it in **Settings → Display language**.
 
 ### 4.2 Reload
 
