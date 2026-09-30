@@ -23,7 +23,7 @@ Adopt a pixel-art **cat, dog, rabbit or hamster**, give it a name, and it lives 
 The extension is written in **English**. All interface text lives in one file:
 
 ```
-_locales/en/messages.json      ← 126 strings, about 445 words
+_locales/en/messages.json      ← 127 strings, about 450 words
 ```
 
 Your task is to translate this file in **Phrase TMS**, put the translated file back into the extension, and test the localised extension in Chrome.

@@ -562,6 +562,13 @@
       "version": { "content": "$1", "example": "1.0.0" }
     }
   },
+  "aboutCopyright": {
+    "message": "© Made by $AUTHOR$",
+    "description": "Copyright line at the bottom of the Settings page. Keep the author's name $AUTHOR$ unchanged (do not adapt it). Max 28 chars.",
+    "placeholders": {
+      "author": { "content": "$1", "example": "Max Lee" }
+    }
+  },
 
   "pagePetTip1": {
     "message": "Remember to drink some water!",

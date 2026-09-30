@@ -87,6 +87,7 @@ h3 { font-size: 15px; }
 .btn.ghost { background: transparent; border: 2px solid var(--line); }
 .btn.small { padding: 5px 12px; min-width: 0; font-size: 12px; }
 .btn.danger { display: block; margin: 16px auto 4px; background: transparent; color: var(--danger); border: 2px solid #f1c7c0; max-width: 220px; }
+#version, #copyright { margin: 4px 0 0; }
 
 .actions { display: flex; justify-content: center; gap: 8px; margin-block: 14px 4px; }
 

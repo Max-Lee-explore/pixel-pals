@@ -400,6 +400,7 @@ async function setupSettings() {
   });
 
   $('#version').textContent = t('aboutVersion', [chrome.runtime.getManifest().version]);
+  $('#copyright').textContent = t('aboutCopyright', ['Max Lee']);
 }
 
 async function runQa(code) {
